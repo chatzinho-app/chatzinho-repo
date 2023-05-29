@@ -2,26 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  body {
+    @apply text-2xl font-normal text-dark-gray
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  /* Font styles */
+  .header {
+    @apply text-5xl font-medium text-dark-gray
+  }
+  .header-2 {
+    @apply text-4xl font-medium text-dark-gray
+  }
+  .sub-header {
+    @apply text-3xl font-normal text-dark-gray
+  }
+  .sub-header-2 {
+    @apply text-3xl font-bold text-dark-gray
+  }
+  .text-default {
+    @apply text-2xl font-normal text-dark-gray
+  }
+  .text-bold {
+    @apply text-2xl font-semibold text-gray
+  }
+  .description-header {
+    @apply text-2xl font-medium text-gray
+  }
+  .description-text {
+    @apply text-xl font-normal text-gray
+  }
+  .label {
+    @apply text-base font-normal text-gray
+  }
+  .label-bold {
+    @apply text-base font-medium text-gray
+  }
+  .action {
+    @apply text-sm font-normal text-gray
+  }
 }
