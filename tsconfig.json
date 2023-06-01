@@ -24,6 +24,7 @@
       "@app/*": ["./src/app/*"],
       "@common/*": ["./src/app/common/*"],
       "@modules/*": ["./src/app/(modules)/*"],
+      "@ui/*": ["./src/app/common/components/ui/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
