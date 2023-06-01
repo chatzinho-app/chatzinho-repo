@@ -1,8 +1,13 @@
-import QueryClientProvider from '@common/config/react-query-provider'
 import './globals.css'
+
+import BaseTemplate from '@common/components/BaseTemplate'
+import QueryClientProvider from '@common/config/react-query-provider'
 import { Poppins } from 'next/font/google'
 
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'] })
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+})
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,10 +20,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={poppins.className}>
         <QueryClientProvider>
-          {children}
+          <BaseTemplate>{children}</BaseTemplate>
         </QueryClientProvider>
       </body>
     </html>

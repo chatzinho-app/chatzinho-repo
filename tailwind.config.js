@@ -15,28 +15,28 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       // WHITE COLORS
-      'white': '#FFFFFF',
+      white: '#FFFFFF',
       'white-blue': '#F2F5FF',
       'white-gray': '#F4F5F6',
       // GRAY COLORS
-      'gray': '#AAB3C3',
+      gray: '#AAB3C3',
       'light-gray': '#D9D9D9',
       'dark-gray': '#2B3241',
       // GREEN COLORS
-      'green': '#00A286',
+      green: '#00A286',
       'light-green': '#00C19F',
       // BLUE COLORS
-      'blue': '#4A72FF',
+      blue: '#4A72FF',
       'dark-blue': '#2C6CD6',
       'light-blue': '#B4C4FF',
       // TEXT COLORS
-      'black': '#000000',
+      black: '#000000',
       // STATUS COLORS
-      'error': '#FF574D',
-      'success': '#00A286',
+      error: '#FF574D',
+      success: '#00A286',
     },
     fontFamily: {
-      sans: ['Poppins', 'sans-serif']
+      sans: ['Poppins', 'sans-serif'],
     },
     fontSize: {
       sm: '0.625rem', // 10
@@ -48,23 +48,23 @@ module.exports = {
       '5xl': '1.75rem', // 28
     },
     spacing: {
-      "0": "0",
-      "0.5": '0.313rem', // xs
-      '1': '0.625rem',   // sm
-      '1.5': '0.69rem',   // sm
-      '2': '0.938rem',   // md
-      '3': '1.25rem',    // lg
-      '4': '1.563rem',   // xl
-      '5': '1.875rem',   // 2xl
-      '6': '2.5rem',     // 3xl
-      '7': '3.125rem',   // 4xl
-      '8': '3.75rem',    // 5xl
+      0: '0',
+      0.5: '0.313rem', // xs
+      1: '0.625rem', // sm
+      1.5: '0.69rem', // sm
+      2: '0.938rem', // md
+      3: '1.25rem', // lg
+      4: '1.563rem', // xl
+      5: '1.875rem', // 2xl
+      6: '2.5rem', // 3xl
+      7: '3.125rem', // 4xl
+      8: '3.75rem', // 5xl
     },
     borderRadius: {
       sm: '0.625rem',
       md: '0.938rem',
       lg: '1.25rem',
-      full: '9999px'
+      full: '9999px',
     },
     extend: {
       backgroundImage: {

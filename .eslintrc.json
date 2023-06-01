@@ -1,8 +1,5 @@
 {
-  "extends": ["next", "next/core-web-vitals", "eslint:recommended"],
-  "globals": {
-    "React": "readonly"
-  },
+  "extends": ["next", "prettier", "@lsferreirapel/eslint-config"],
   "rules": {
     "no-unused-vars": "error"
   }

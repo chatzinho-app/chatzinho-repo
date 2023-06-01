@@ -1,38 +1,57 @@
-"use client"
-import React, { useState } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import Input from './Input';
+'use client'
+import React, { useState } from 'react'
+
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { twMerge } from 'tailwind-merge'
+
+import Input from './Input'
 
 export interface FieldProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  errorMessage?: string;
-  label?: string;
+  errorMessage?: string
+  label?: string
 }
 
-export default function Field({ errorMessage, label, ...props }: FieldProps) {
-  const [visible, setVisible] = useState(false);
+export default function Field({
+  errorMessage,
+  label,
+  className,
+  ...props
+}: FieldProps) {
+  const [visible, setVisible] = useState(false)
 
   const labelClassName = twMerge(
     'block text-default mb-0.5',
     props?.required && "after:content-['*'] after:text-error",
-    errorMessage && 'text-error'
-  );
+    errorMessage && 'text-error',
+  )
 
   function toogleVisible() {
-    setVisible(state => !state)
+    setVisible((state) => !state)
   }
-  const endDecorator = visible ? <AiOutlineEye size={20} onClick={toogleVisible} /> : <AiOutlineEyeInvisible size={20}  onClick={toogleVisible} />
+  const endDecorator = visible ? (
+    <AiOutlineEye size={20} onClick={toogleVisible} />
+  ) : (
+    <AiOutlineEyeInvisible size={20} onClick={toogleVisible} />
+  )
 
   return (
-    <div>
+    <div className={twMerge('w-full', className)}>
       {label && (
         <label htmlFor={`form_${props?.name}`} className={labelClassName}>
           {label}
         </label>
       )}
-      <Input hasError={!!errorMessage} id={`form_${props?.name}`}  endDecorator={props?.type === "password" && endDecorator} {...props} type={visible ? "text" : props?.type}/>
-      {errorMessage && <p className="mt-0.5 text-sm label text-error">{errorMessage}</p>}
+      <Input
+        hasError={!!errorMessage}
+        id={`form_${props?.name}`}
+        endDecorator={props?.type === 'password' && endDecorator}
+        {...props}
+        type={visible ? 'text' : props?.type}
+      />
+      {errorMessage && (
+        <p className="label mt-0.5 text-sm text-error">{errorMessage}</p>
+      )}
     </div>
-  );
+  )
 }
