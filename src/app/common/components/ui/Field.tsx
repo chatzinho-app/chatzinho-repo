@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 
+import { cn } from '@common/utils/theme'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { twMerge } from 'tailwind-merge'
 
@@ -21,8 +22,8 @@ export default function Field({
   const [visible, setVisible] = useState(false)
 
   const labelClassName = twMerge(
-    'block text-default mb-0.5',
-    props?.required && "after:content-['*'] after:text-error",
+    'text-default mb-0.5 block',
+    props?.required && "after:text-error after:content-['*']",
     errorMessage && 'text-error',
   )
 
@@ -36,7 +37,7 @@ export default function Field({
   )
 
   return (
-    <div className={twMerge('w-full', className)}>
+    <div className={cn('w-full', className)}>
       {label && (
         <label htmlFor={`form_${props?.name}`} className={labelClassName}>
           {label}

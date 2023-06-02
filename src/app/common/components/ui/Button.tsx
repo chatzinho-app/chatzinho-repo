@@ -1,18 +1,18 @@
 import React from 'react'
 
+import { cn } from '@common/utils/theme'
 import { cva, VariantProps } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 
-import { cn } from '../../utils/theme'
 import Spinner from './Spinner'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center description-header transition-colors focus:outline-none disabled:cursor-not-allowed',
+  'description-header inline-flex items-center justify-center transition-colors focus:outline-none disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
         default:
-          'text-white bg-gradient-to-r from-light-blue via-blue to-dark-blue hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-light-blue shadow-lg shadow-blue-500/50',
+          'bg-gradient-to-r text-white from-light-blue via-blue to-dark-blue hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-light-blue shadow-lg shadow-blue-500/50',
         outline:
           'bg-transparent border border-zinc-200 hover:bg-zinc-100 disabled:bg-white-gray disabled:text-gray',
         ghost: 'bg-transparent hover:bg-zinc-100',

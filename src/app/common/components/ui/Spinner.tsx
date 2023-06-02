@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge'
+import { cn } from '@common/utils/theme'
 
 export interface SpinnerProps {
   className?: string
@@ -9,7 +9,7 @@ export default function Spinner({ className }: SpinnerProps) {
     <svg
       aria-hidden="true"
       role="status"
-      className={twMerge('mx-1 inline h-3 w-3 animate-spin', className)}
+      className={cn('mx-1 inline h-3 w-3 animate-spin', className)}
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
