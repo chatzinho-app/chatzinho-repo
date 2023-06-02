@@ -31,9 +31,9 @@ export default function Field({
     setVisible((state) => !state)
   }
   const endDecorator = visible ? (
-    <AiOutlineEye size={20} onClick={toogleVisible} />
+    <AiOutlineEye size={23} onClick={toogleVisible} />
   ) : (
-    <AiOutlineEyeInvisible size={20} onClick={toogleVisible} />
+    <AiOutlineEyeInvisible size={23} onClick={toogleVisible} />
   )
 
   return (
@@ -44,7 +44,7 @@ export default function Field({
         </label>
       )}
       <Input
-        hasError={!!errorMessage}
+        invalid={!!errorMessage}
         id={`form_${props?.name}`}
         endDecorator={props?.type === 'password' && endDecorator}
         {...props}

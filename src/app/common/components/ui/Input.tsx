@@ -5,21 +5,21 @@ import { twMerge } from 'tailwind-merge'
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  hasError?: boolean
+  invalid?: boolean
   startDecorator?: React.ReactNode
   endDecorator?: React.ReactNode
 }
 
 export default function Input({
-  hasError,
+  invalid,
   startDecorator,
   endDecorator,
   className,
   ...props
 }: InputProps) {
   const inputClassName = twMerge(
-    'description-text block block w-full w-full rounded-full border border-light-gray bg-white px-2 py-1 text-dark-gray placeholder-gray focus:border-light-blue focus:outline-none focus:ring-2 focus:ring-light-blue',
-    hasError &&
+    'description-text block block w-full w-full rounded-full border border-light-gray bg-white px-2 py-2 text-dark-gray placeholder-gray focus:border-light-blue focus:outline-none focus:ring-2 focus:ring-light-blue',
+    invalid &&
       'border-error text-error placeholder-error focus:border-error/50 focus:ring-error/50',
     !!startDecorator && 'pl-6',
   )
@@ -34,8 +34,8 @@ export default function Input({
       <input className={inputClassName} {...props} />
       <div
         className={twMerge(
-          'absolute bottom-1.5 right-3',
-          hasError ? 'text-error' : 'text-gray',
+          'absolute bottom-2 right-3',
+          invalid ? 'text-error' : 'text-gray',
         )}
       >
         {endDecorator}

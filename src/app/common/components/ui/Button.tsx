@@ -12,7 +12,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-gradient-to-r text-white from-light-blue via-blue to-dark-blue hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-light-blue shadow-lg shadow-blue-500/50',
+          'bg-gradient-to-r text-white from-light-blue via-blue to-dark-blue hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-light-blue shadow-lg shadow-blue-500/50 disabled:from-white-gray disabled:via-white-gray disabled:to-white-gray disabled:text-gray disabled:shadow-transparent',
         outline:
           'bg-transparent border border-zinc-200 hover:bg-zinc-100 disabled:bg-white-gray disabled:text-gray',
         ghost: 'bg-transparent hover:bg-zinc-100',
