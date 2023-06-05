@@ -2,33 +2,33 @@
 
 async function request<TResponse>(
   input: RequestInfo | URL,
-  init?: RequestInit | undefined
+  init?: RequestInit | undefined,
 ): Promise<TResponse> {
-  const baseUrl = process.env.API_URL ?? 'https://localhost:3000';
+  const baseUrl = process.env.API_URL ?? 'https://localhost:3000'
 
-  const response = await fetch(`${baseUrl}/${input}`, init);
-  return await response.json();
+  const response = await fetch(`${baseUrl}/${input}`, init)
+  return await response.json()
 }
 
 export const api = {
   get: async <TResponse>(
     input: RequestInfo | URL,
-    init?: RequestInit | undefined
+    init?: RequestInit | undefined,
   ) =>
     await request<TResponse>(input, {
-      cache: "no-store",
+      cache: 'no-store',
       ...init,
-      method: "GET",
+      method: 'GET',
     }),
   post: async <TResponse, TBody>(
     input: RequestInfo | URL,
     body: TBody,
-    init?: RequestInit | undefined
+    init?: RequestInit | undefined,
   ) =>
     await request<TResponse>(input, {
-      cache: "no-store",
+      cache: 'no-store',
       ...init,
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(body),
     }),
-};
+}

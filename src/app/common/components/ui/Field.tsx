@@ -31,9 +31,17 @@ export default function Field({
     setVisible((state) => !state)
   }
   const endDecorator = visible ? (
-    <AiOutlineEye size={23} onClick={toogleVisible} />
+    <AiOutlineEye
+      size={23}
+      onClick={toogleVisible}
+      className="cursor-pointer"
+    />
   ) : (
-    <AiOutlineEyeInvisible size={23} onClick={toogleVisible} />
+    <AiOutlineEyeInvisible
+      size={23}
+      onClick={toogleVisible}
+      className="cursor-pointer"
+    />
   )
 
   return (

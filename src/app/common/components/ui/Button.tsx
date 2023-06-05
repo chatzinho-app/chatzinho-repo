@@ -12,14 +12,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-gradient-to-r text-white from-light-blue via-blue to-dark-blue hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-light-blue shadow-lg shadow-blue-500/50 disabled:from-white-gray disabled:via-white-gray disabled:to-white-gray disabled:text-gray disabled:shadow-transparent',
+          'shadow-blue-500/50 bg-gradient-to-r from-light-blue via-blue to-dark-blue text-white shadow-lg hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-light-blue disabled:from-white-gray disabled:via-white-gray disabled:to-white-gray disabled:text-gray disabled:shadow-transparent',
         outline:
-          'bg-transparent border border-zinc-200 hover:bg-zinc-100 disabled:bg-white-gray disabled:text-gray',
-        ghost: 'bg-transparent hover:bg-zinc-100',
-        link: 'bg-transparent underline-offset-4 hover:underline text-zinc-900 hover:bg-transparent',
+          'border-zinc-200 hover:bg-zinc-100 border bg-transparent disabled:bg-white-gray disabled:text-gray',
+        ghost: 'hover:bg-zinc-100 bg-transparent',
+        link: 'text-zinc-900 bg-transparent underline-offset-4 hover:bg-transparent hover:underline',
       },
       size: {
-        default: 'w-full py-2 px-5 rounded-full',
+        default: 'w-full rounded-full px-5 py-2',
       },
     },
     defaultVariants: {
