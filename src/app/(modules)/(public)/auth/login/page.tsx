@@ -3,12 +3,15 @@
 import TextField from '@common/components/fields/TextField'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Button from '@ui/Button'
-import Card from '@ui/Card'
-import { useForm } from 'react-hook-form'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { FormProvider, useForm } from 'react-hook-form'
 
 import { LoginFormValues, LoginSchema } from './schema'
 
 export default function Login() {
+  const route = useRouter()
+
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(LoginSchema),
     mode: 'onTouched',
@@ -18,15 +21,16 @@ export default function Login() {
 
   function onSubmit(values: LoginFormValues) {
     console.log('LOGIN VALUES: ', values)
+
+    route.push('/dashboard/dispute')
   }
 
   return (
-    <Card className="max-w-[25vw] flex-col justify-between">
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+    <FormProvider {...form}>
+      <form className="w-full" onSubmit={form.handleSubmit(onSubmit)}>
         <h1 className="header mb-5 text-center">Bem vindo!</h1>
         <TextField
           className="mb-1"
-          control={form.control}
           name="email"
           type="email"
           label="Email"
@@ -36,20 +40,27 @@ export default function Login() {
         />
         <TextField
           className="mb-1"
-          control={form.control}
           name="password"
           type="password"
           label="Senha"
           placeholder="Sua senha"
           required
         />
+        <div className="mt-8 w-full">
+          <Button type="submit" disabled={!isValid} loading={isSubmitting}>
+            Entrar
+          </Button>
+          <p className="description-text mt-1 text-center text-dark-gray">
+            Ainda não tem uma conta?{' '}
+            <Link
+              href="/auth/register"
+              className="text-blue hover:text-dark-blue"
+            >
+              Registre-se agora
+            </Link>
+          </p>
+        </div>
       </form>
-      <div className="w-full">
-        <Button type="submit" disabled={!isValid} loading={isSubmitting}>
-          Entrar
-        </Button>
-        <p>Ainda não tem uma conta? Registre-se agora</p>
-      </div>
-    </Card>
+    </FormProvider>
   )
 }
