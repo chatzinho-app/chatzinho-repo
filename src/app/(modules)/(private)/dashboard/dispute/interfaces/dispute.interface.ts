@@ -1,15 +1,15 @@
 // POST /bids
 interface CreateBidBody {
-  value: number;
+  value: number
 }
 interface CreateBidResponse {
-  status: string;
+  status: string
 }
-export type { CreateBidBody, CreateBidResponse };
+export type { CreateBidBody, CreateBidResponse }
 
 // GET /bids
 interface listBidsResponse {
-  userId: string;
-  value: number;
+  userId: string
+  value: number
 }
-export type { listBidsResponse };
+export type { listBidsResponse }
