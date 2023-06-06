@@ -30,5 +30,25 @@
 		  ""
 		],
 		"description": ""
+	  },
+	  "React Hook With Folder Name": {
+		"prefix": "rfh",
+		"body": [
+      "'use client'",
+      "",
+		  "interface Use${TM_DIRECTORY/^.+[\\\\/\\\\\\\\]+(.*)$/$1/}Values {",
+		  "  data: any[]",
+		  "}",
+		  "",
+		  "export default function use${TM_DIRECTORY/^.+[\\\\/\\\\\\\\]+(.*)$/$1/}(): Use${TM_DIRECTORY/^.+[\\\\/\\\\\\\\]+(.*)$/$1/}Values {",
+      "  const data = []",
+      "",
+      "  return {",
+		  "    data,",
+		  "  }",
+		  "}",
+		  ""
+		],
+		"description": ""
 	  }
 }
