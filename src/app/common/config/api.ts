@@ -4,7 +4,7 @@ async function request<TResponse>(
   input: RequestInfo | URL,
   init?: RequestInit | undefined,
 ): Promise<TResponse> {
-  const baseUrl = process.env.API_URL ?? 'https://localhost:3000'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://localhost:3000'
 
   const response = await fetch(`${baseUrl}/${input}`, init)
   return await response.json()
