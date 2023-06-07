@@ -1,29 +1,16 @@
 'use client'
 
 import TextField from '@common/components/fields/TextField'
-import { zodResolver } from '@hookform/resolvers/zod'
 import Button from '@ui/Button'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { FormProvider, useForm } from 'react-hook-form'
+import { FormProvider } from 'react-hook-form'
 
-import { LoginFormValues, LoginSchema } from './schema'
+import useLogin from './hook'
 
 export default function Login() {
-  const route = useRouter()
-
-  const form = useForm<LoginFormValues>({
-    resolver: zodResolver(LoginSchema),
-    mode: 'onTouched',
-  })
+  const { form, onSubmit } = useLogin()
 
   const { isSubmitting, isValid } = form.formState
-
-  function onSubmit(values: LoginFormValues) {
-    console.log('LOGIN VALUES: ', values)
-
-    route.push('/dashboard/dispute')
-  }
 
   return (
     <FormProvider {...form}>
