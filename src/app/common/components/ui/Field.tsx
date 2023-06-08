@@ -6,9 +6,9 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { twMerge } from 'tailwind-merge'
 
 import Input from './Input'
+import MaskInput, { MaskInputProps } from './MaskInput'
 
-export interface FieldProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface FieldProps extends Partial<MaskInputProps> {
   errorMessage?: string
   label?: string
 }
@@ -17,6 +17,7 @@ export default function Field({
   errorMessage,
   label,
   className,
+  mask,
   ...props
 }: FieldProps) {
   const [visible, setVisible] = useState(false)
@@ -51,13 +52,24 @@ export default function Field({
           {label}
         </label>
       )}
-      <Input
-        invalid={!!errorMessage}
-        id={`form_${props?.name}`}
-        endDecorator={props?.type === 'password' && endDecorator}
-        {...props}
-        type={visible ? 'text' : props?.type}
-      />
+      {mask ? (
+        <MaskInput
+          invalid={!!errorMessage}
+          id={`form_${props?.name}`}
+          endDecorator={props?.type === 'password' && endDecorator}
+          {...props}
+          type={visible ? 'text' : props?.type}
+          mask={mask}
+        />
+      ) : (
+        <Input
+          invalid={!!errorMessage}
+          id={`form_${props?.name}`}
+          endDecorator={props?.type === 'password' && endDecorator}
+          {...props}
+          type={visible ? 'text' : props?.type}
+        />
+      )}
       {errorMessage && (
         <p className="label mt-0.5 text-sm text-error">{errorMessage}</p>
       )}
