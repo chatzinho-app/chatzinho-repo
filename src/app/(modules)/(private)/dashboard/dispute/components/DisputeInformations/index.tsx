@@ -1,10 +1,14 @@
+'use client'
+
 import React from 'react'
 
+import MaskField from '@common/components/fields/MaskField'
 import { cn } from '@common/utils/theme'
 import Button from '@ui/Button'
-import Field from '@ui/Field'
+import { FormProvider } from 'react-hook-form'
 
 import InformationText from './components/InformationText'
+import useDisputeInformations from './hook'
 
 interface DisputeInformationsProps {
   className?: string
@@ -13,6 +17,8 @@ interface DisputeInformationsProps {
 export default function DisputeInformations({
   className,
 }: DisputeInformationsProps) {
+  const { form, onSubmit } = useDisputeInformations()
+
   return (
     <section
       className={cn('flex h-full flex-1 flex-col justify-between', className)}
@@ -43,10 +49,19 @@ export default function DisputeInformations({
 
       <section>
         <InformationText title="Seu melhor lance" value={1700.8} />
-        <div className="mt-6 flex">
-          <Field label="Dê seu lance" />
-          <Button className="ml-2 w-1/2 self-end">Dar lance</Button>
-        </div>
+        <FormProvider {...form}>
+          <form className="mt-6 flex" onSubmit={form.handleSubmit(onSubmit)}>
+            <MaskField
+              mask="currency"
+              name="bid"
+              label="Dê seu lance"
+              placeholder="R$ 0,00"
+            />
+            <Button className="ml-2 w-1/2 self-end" type="submit">
+              Dar lance
+            </Button>
+          </form>
+        </FormProvider>
       </section>
     </section>
   )

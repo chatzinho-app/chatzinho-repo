@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
-    <section className="z-50 mx-8 my-5 mb-7 flex flex-1 flex-col">
+    <section className="z-50 mx-8 flex max-h-screen flex-1 flex-col py-[2.5%]">
       <header className="mb-4 flex items-center justify-between">
         <Image
           className="pointer-events-none"
@@ -19,7 +19,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
           <p className="description-text text-green">Admin</p>
         </div>
       </header>
-      <Card className="w-full items-center justify-between self-center">
+      <Card className="max-h-[85%] w-full items-center justify-between self-center">
         {children}
       </Card>
     </section>
