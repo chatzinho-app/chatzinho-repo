@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "lerna run --parallel dev",
     "start": "lerna run --parallel start",
-    "build": "lerna run --parallel build"
+    "build": "lerna run --parallel build",
+    "lint": "lerna run --parallel lint",
+    "prepare": "husky install",
+    "commit": "git cz"
   },
   "engines": {
     "node": ">=18.16.0",
@@ -19,13 +22,27 @@
     "date-fns": "^2.30.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.5",
+    "@commitlint/config-conventional": "^17.6.5",
     "@lsferreirapel/eslint-config": "^1.0.0",
     "@types/node": "^20.2.5",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.41.0",
+    "husky": "^8.0.3",
     "lerna": "^7.0.0",
     "typescript": "^5.0.4"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
+  }
 }
