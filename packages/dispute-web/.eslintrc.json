@@ -1,6 +1,3 @@
 {
-  "extends": ["next", "prettier", "@lsferreirapel/eslint-config"],
-  "rules": {
-    "no-unused-vars": "error"
-  }
+  "extends": ["next", "prettier", "@lsferreirapel/eslint-config"]
 }

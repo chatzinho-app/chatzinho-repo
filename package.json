@@ -16,7 +16,8 @@
     "npm": "please-use-npm"
   },
   "workspaces": [
-    "packages/dispute-web"
+    "packages/dispute-web",
+    "packages/dispute-api"
   ],
   "dependencies": {
     "date-fns": "^2.30.0"
@@ -24,7 +25,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
-    "@lsferreirapel/eslint-config": "^1.0.0",
+    "@lsferreirapel/eslint-config": "^1.1.0",
     "@types/node": "^20.2.5",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.41.0",
