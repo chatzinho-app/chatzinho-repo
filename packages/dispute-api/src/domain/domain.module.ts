@@ -2,9 +2,8 @@ import { forwardRef, Module } from '@nestjs/common'
 
 import { ApplicationModule } from '@application/application.module'
 import { AuthModule } from '@infra/http/auth/auth.module'
-import AuthenticateUseCase from '@usecases/auth/authenticate.usecase'
-import RegisterUserUseCase from '@usecases/auth/register-user.usecase'
-import GetAllUsersUseCase from '@usecases/user/get-all-users.usecase'
+import { AuthenticateUseCase, RegisterUserUseCase } from '@usecases/auth'
+import { GetAllUsersUseCase } from '@usecases/user'
 
 import { PasswordValidator } from './validators/password.validator'
 

@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common'
 
-import GetAllUsersUseCase from '@usecases/user/get-all-users.usecase'
+import { GetAllUsersUseCase } from '@usecases/user'
 
 import { UserMapper } from './dto/user.mapper'
 import UserV1OutputDto from './dto/user.v1.output'

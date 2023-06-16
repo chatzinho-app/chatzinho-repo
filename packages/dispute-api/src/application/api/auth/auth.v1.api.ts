@@ -1,6 +1,6 @@
 import { Controller, Post } from '@nestjs/common'
 
-import AuthenticateUseCase from '@usecases/auth/authenticate.usecase'
+import { AuthenticateUseCase } from '@usecases/auth'
 
 import LoginV1Input from './dto/login.v1.input'
 import LoginV1Output from './dto/login.v1.output'
