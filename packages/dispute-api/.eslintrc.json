@@ -1,0 +1,6 @@
+{
+  "extends": ["@lsferreirapel/eslint-config/environments/node"],
+  "rules": {
+    "no-useless-constructor": "off"
+  }
+}
