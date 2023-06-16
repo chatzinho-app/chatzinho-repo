@@ -4,7 +4,7 @@ import { UserService } from '@application/services/user.service'
 import { User } from '@domain/entities/user.entity'
 
 @Injectable()
-export default class GetAllUsersUseCase {
+export class GetAllUsersUseCase {
   constructor(
     @Inject(UserService)
     private userService: UserService,

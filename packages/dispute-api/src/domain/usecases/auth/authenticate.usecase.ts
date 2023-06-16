@@ -5,7 +5,7 @@ import { UserService } from '@application/services/user.service'
 import { PasswordValidator } from '@domain/validators/password.validator'
 
 @Injectable()
-export default class AuthenticateUseCase {
+export class AuthenticateUseCase {
   constructor(
     @Inject(UserService)
     private userService: UserService,
