@@ -1,8 +1,9 @@
+import { BidMapper } from '@application/api/bid/dto'
 import { User } from '@domain/entities/user.entity'
-import { UserStatus } from '@domain/enums/user-status.enum'
+import { UserStatusEnum } from '@domain/enums/user-status.enum'
 
-import UserV1InputDto from './user.v1.input'
-import UserV1OutputDto from './user.v1.output'
+import { UserV1InputDto } from './user.v1.input'
+import { UserV1OutputDto } from './user.v1.output'
 
 export class UserMapper {
   public static toDto(user: User): UserV1OutputDto {
@@ -12,8 +13,10 @@ export class UserMapper {
       cpf: user.cpf,
       email: user.email,
       status: user.status,
-      bids: user.bids,
-      roles: user.roles,
+      bids: BidMapper.toList(user.bids),
+      roles: user.roles.map((role) => role.name),
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
     }
   }
 
@@ -27,7 +30,7 @@ export class UserMapper {
       environmentInputV1Dto.email,
       environmentInputV1Dto.password,
       environmentInputV1Dto.cpf,
-      UserStatus.INACTIVE,
+      UserStatusEnum.INACTIVE,
     )
   }
 }
