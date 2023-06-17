@@ -1,5 +1,5 @@
 import { BaseEntity } from '@core/domain/entities/base.entity'
-import { DiputeStatus } from '@domain/enums/dispute-status.enum'
+import { DiputeStatusEnum } from '@domain/enums/dispute-status.enum'
 import { Column, Entity, OneToMany } from 'typeorm'
 
 import { Bid } from './bid.entity'
@@ -19,11 +19,11 @@ export class Dispute extends BaseEntity {
   valueBetweenBids: number
 
   @Column({
-    enumName: 'DiputeStatus',
-    enum: DiputeStatus,
-    default: DiputeStatus.PENDING,
+    enumName: 'DiputeStatusEnum',
+    enum: DiputeStatusEnum,
+    default: DiputeStatusEnum.PENDING,
   })
-  status: DiputeStatus
+  status: DiputeStatusEnum
 
   @Column({
     nullable: true,

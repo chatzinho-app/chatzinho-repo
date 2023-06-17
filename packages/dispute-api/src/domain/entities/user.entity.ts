@@ -1,6 +1,6 @@
 import { PasswordColumn } from '@core/decorators/password-column.decorator'
 import { BaseEntity } from '@core/domain/entities/base.entity'
-import { UserStatus } from '@domain/enums/user-status.enum'
+import { UserStatusEnum } from '@domain/enums/user-status.enum'
 import { Column, Entity, JoinTable, ManyToMany, OneToMany } from 'typeorm'
 
 import { Bid } from './bid.entity'
@@ -25,11 +25,11 @@ export class User extends BaseEntity {
   cpf: string
 
   @Column({
-    enumName: 'UserStatus',
-    enum: UserStatus,
-    default: UserStatus.INACTIVE,
+    enumName: 'UserStatusEnum',
+    enum: UserStatusEnum,
+    default: UserStatusEnum.INACTIVE,
   })
-  status: UserStatus
+  status: UserStatusEnum
 
   @OneToMany(() => Bid, (bid) => bid.dispute, { nullable: true })
   bids?: Bid[]
@@ -46,7 +46,7 @@ export class User extends BaseEntity {
     email: string,
     password: string,
     cpf: string,
-    status: UserStatus,
+    status: UserStatusEnum,
   ) {
     super()
     this.name = name
