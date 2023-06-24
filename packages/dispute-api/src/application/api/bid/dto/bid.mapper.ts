@@ -20,13 +20,11 @@ export class BidMapper {
     return bids.map(this.toDto)
   }
 
-  // public static toEntity(environmentInputV1Dto: UserV1InputDto): User {
-  //   return new User(
-  //     environmentInputV1Dto.name,
-  //     environmentInputV1Dto.email,
-  //     environmentInputV1Dto.password,
-  //     environmentInputV1Dto.cpf,
-  //     UserStatusEnum.INACTIVE,
+  // public static toEntity(environmentInputV1Dto: BidV1InputDto): Bid {
+  //   return new Bid(
+  //     environmentInputV1Dto.owner,
+  //     environmentInputV1Dto.value,
+  //     environmentInputV1Dto.dispute,
   //   )
   // }
 }

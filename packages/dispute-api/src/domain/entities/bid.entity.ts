@@ -6,7 +6,10 @@ import { User } from './user.entity'
 
 @Entity({ name: 'bids' })
 export class Bid extends BaseEntity {
-  @ManyToOne(() => User, (user) => user.bids)
+  @ManyToOne(() => User, (user) => user.bids, {
+    cascade: true,
+    eager: true,
+  })
   owner: User
 
   @Column()
@@ -16,4 +19,11 @@ export class Bid extends BaseEntity {
     eager: true,
   })
   dispute: Dispute
+
+  constructor(owner: User, value: number, dispute: Dispute) {
+    super()
+    this.owner = owner
+    this.value = value
+    this.dispute = dispute
+  }
 }
