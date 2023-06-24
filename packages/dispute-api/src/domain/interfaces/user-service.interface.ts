@@ -1,4 +1,4 @@
-import { User } from '@domain/entities/user.entity'
+import { User } from '@domain/entities'
 import { FindOptionsWhere } from 'typeorm'
 
 export interface IUserService {

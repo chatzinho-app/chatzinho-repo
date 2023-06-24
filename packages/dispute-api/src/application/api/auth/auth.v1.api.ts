@@ -1,14 +1,23 @@
 import { Body, Controller, Post } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
 
-import { AuthenticateUseCase } from '@usecases/auth'
+import { AuthenticateUseCase, RegisterUserUseCase } from '@usecases/auth'
 
-import { LoginV1Input, LoginV1Output } from './dto'
+import { UserMapper } from '../user/dto'
+import {
+  LoginV1Input,
+  LoginV1Output,
+  RegisterV1Input,
+  RegisterV1Output,
+} from './dto'
 
 @ApiTags('Auth')
 @Controller({ path: 'auth', version: '1' })
 export class AuthV1Api {
-  constructor(private readonly authenticateUseCase: AuthenticateUseCase) {}
+  constructor(
+    private readonly authenticateUseCase: AuthenticateUseCase,
+    private readonly registerUserUseCase: RegisterUserUseCase,
+  ) {}
 
   @ApiOperation({
     description: 'Generates a token based on email and password',
@@ -19,11 +28,14 @@ export class AuthV1Api {
     return await this.authenticateUseCase.execute(body)
   }
 
-    return await this.authenticateUseCase.execute(input.email, input.password)
-  }
+  @ApiOperation({
+    description: 'Register the user',
+    tags: ['auth'],
+  })
+  @Post('/register')
+  async register(@Body() body: RegisterV1Input): Promise<RegisterV1Output> {
+    const user = await this.registerUserUseCase.execute(body)
 
-  // @Post('/register')
-  // async register(input: LoginV1Input): Promise<LoginV1Output> {
-  //   return await this.authenticateUseCase.execute(input.email, input.password)
-  // }
+    return UserMapper.toDto(user)
+  }
 }

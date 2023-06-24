@@ -1,2 +1,2 @@
 export * from './authenticate.usecase'
-export * from './register-user.usecase'
+export * from './create-user.usecase'
