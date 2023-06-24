@@ -14,6 +14,9 @@ RUN npm i
 # Copy the application code to the container
 COPY . .
 
+# Run migrations
+RUN npm run typeorm:run-migrations
+
 # Run the application in development mode
 CMD "npm" "run" "start:dev"
 
@@ -32,6 +35,9 @@ RUN npm i
 
 # Copy the application code to the container
 COPY . .
+
+# Run migrations
+RUN npm run typeorm:run-migrations
 
 # Run the application in development mode
 CMD "npm" "run" "build"
