@@ -26,7 +26,7 @@ export class UserService implements IUserService {
     return this.repository.findOneBy(where)
   }
 
-  async save<User>(user: User): Promise<User> {
+  async save(user: User): Promise<User> {
     return this.repository.save(user)
   }
 }
