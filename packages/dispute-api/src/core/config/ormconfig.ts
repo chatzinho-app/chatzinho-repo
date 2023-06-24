@@ -1,19 +1,19 @@
+import { join } from 'path'
 import { DataSource } from 'typeorm'
+
+import { envs } from './env.config'
 
 export const ormconfig = new DataSource({
   migrationsTableName: 'migrations',
   type: 'postgres',
-  host: process.env.DB_HOST,
-  port: +process.env.DB_PORT || 5434,
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  logging:
-    Boolean(process.env?.TYPEORM_LOGGING?.toLowerCase() === 'true') || false,
-  synchronize:
-    Boolean(process.env?.TYPEORM_SYNCHRONIZE?.toLowerCase() === 'true') ||
-    false,
-  entities: ['dist/**/**.entity.js'],
+  host: envs.dbHost,
+  port: envs.dbPort,
+  username: envs.dbUsername,
+  password: envs.dbPassword,
+  database: envs.dbName,
+  logging: envs.typeormLogging,
+  synchronize: envs.typeormSynchronize,
+  entities: [join(__dirname, '**', '*.entity.{ts,js}')],
   // migrations: ['dist/migrations/**/*.js'],
   // subscribers: ['dist/subscriber/**/*.js'],
 })
