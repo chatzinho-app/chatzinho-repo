@@ -11,12 +11,13 @@ export class AuthV1Api {
   constructor(private readonly authenticateUseCase: AuthenticateUseCase) {}
 
   @ApiOperation({
-    description: 'gera um token com base no email e senha',
+    description: 'Generates a token based on email and password',
     tags: ['auth'],
   })
   @Post('/login')
-  async login(@Body() input: LoginV1Input): Promise<LoginV1Output> {
-    console.log('INPUT: ', input)
+  async login(@Body() body: LoginV1Input): Promise<LoginV1Output> {
+    return await this.authenticateUseCase.execute(body)
+  }
 
     return await this.authenticateUseCase.execute(input.email, input.password)
   }

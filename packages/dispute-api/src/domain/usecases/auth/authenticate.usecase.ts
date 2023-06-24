@@ -4,6 +4,8 @@ import { JwtService } from '@nestjs/jwt'
 import { UserService } from '@application/services/user.service'
 import { PasswordValidator } from '@domain/validators/password.validator'
 
+import { AuthenticateUserDto } from './dto/authenticate-user.input'
+
 @Injectable()
 export class AuthenticateUseCase {
   constructor(
@@ -13,7 +15,9 @@ export class AuthenticateUseCase {
     private passwordValidator: PasswordValidator,
   ) {}
 
-  async execute(email: string, password: string): Promise<{ token: string }> {
+  async execute(input: AuthenticateUserDto): Promise<{ token: string }> {
+    const { email, password } = input
+
     const foundUser = await this.userService.findOneBy({ email })
 
     this.passwordValidator.validate(password, foundUser)
