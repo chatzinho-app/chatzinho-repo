@@ -1,7 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common'
 
 import { UserService } from '@application/services/user.service'
+import { OffsetPaginationOutputDto } from '@core/dto/offset-pagination.dto'
 import { User } from '@domain/entities/user.entity'
+import { IOffsetPaginationOptions } from '@domain/interfaces/offset-paginaton.interface'
 
 @Injectable()
 export class GetAllUsersUseCase {
@@ -10,7 +12,9 @@ export class GetAllUsersUseCase {
     private userService: UserService,
   ) {}
 
-  async execute(): Promise<User[]> {
-    return await this.userService.findAll()
+  async execute(
+    pagination: IOffsetPaginationOptions,
+  ): Promise<OffsetPaginationOutputDto<User>> {
+    return await this.userService.findAll(pagination)
   }
 }

@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common'
 
 import { UserRepository } from '@application/repository/user.repository'
+import { OffsetPaginationOutputDto } from '@core/dto/offset-pagination.dto'
 import { User } from '@domain/entities/user.entity'
+import { IOffsetPaginationOptions } from '@domain/interfaces/offset-paginaton.interface'
 import { IUserService } from '@domain/interfaces/user-service.interface'
 import { FindOptionsWhere } from 'typeorm'
 
@@ -9,8 +11,10 @@ import { FindOptionsWhere } from 'typeorm'
 export class UserService implements IUserService {
   constructor(private repository: UserRepository) {}
 
-  async findAll(): Promise<User[]> {
-    return this.repository.find()
+  async findAll(
+    pagination?: IOffsetPaginationOptions,
+  ): Promise<OffsetPaginationOutputDto<User>> {
+    return await this.repository.findAll(pagination)
   }
 
   async findOneByIdWithRoles(id: string): Promise<User> {
