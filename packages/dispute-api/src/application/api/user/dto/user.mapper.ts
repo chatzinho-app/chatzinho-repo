@@ -13,14 +13,15 @@ export class UserMapper {
       cpf: user.cpf,
       email: user.email,
       status: user.status,
-      bids: BidMapper.toList(user.bids),
-      roles: user.roles.map((role) => role.name),
+      bids: BidMapper.toList(user?.bids),
+      roles: user?.roles?.map((role) => role.name) ?? [],
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     }
   }
 
   public static toList(users: User[]): UserV1OutputDto[] {
+    if (!users) return []
     return users.map(this.toDto)
   }
 

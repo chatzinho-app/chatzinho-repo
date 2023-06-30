@@ -17,6 +17,7 @@ export class BidMapper {
   }
 
   public static toList(bids: Bid[]): BidV1OutputDto[] {
+    if (!bids) return []
     return bids.map(this.toDto)
   }
 
