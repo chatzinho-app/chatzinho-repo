@@ -31,7 +31,6 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
     const req = context.switchToHttp().getRequest()
 
-    console.log('REQ: ', req)
     const userRoles = req.user?.roles.map((userRole) => userRole.name)
 
     // Permite o recurso caso o usuario possua no mínimo UMA das roles passadas para o decorator

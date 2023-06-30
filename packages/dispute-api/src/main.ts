@@ -1,6 +1,8 @@
 import { VersioningType } from '@nestjs/common'
-import { NestFactory } from '@nestjs/core'
+import { NestFactory, Reflector } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+
+import { JwtAuthGuard } from '@infra/http/auth/jwt-auth.guard'
 
 import { AppModule } from './app.module'
 
@@ -10,6 +12,8 @@ async function bootstrap() {
   app.enableVersioning({
     type: VersioningType.URI,
   })
+
+  app.useGlobalGuards(new JwtAuthGuard(new Reflector()))
 
   const options = new DocumentBuilder()
     .setTitle('API')
