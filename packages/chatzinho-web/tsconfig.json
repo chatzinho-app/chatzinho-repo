@@ -20,8 +20,8 @@
       }
     ],
     "paths": {
-      "@ui/*": ["./src/app/common/components/ui/*"],
-      "@common/*": ["./src/app/common/*"],
+      "@ui/*": ["./src/common/components/ui/*"],
+      "@common/*": ["./src/common/*"],
       "@modules/*": ["./src/app/(modules)/*"],
       "@app/*": ["./src/app/*"],
       "@/*": ["./src/*"]

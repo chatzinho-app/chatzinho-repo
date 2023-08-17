@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren } from "react"
 
 import Card from '@ui/Card'
 import Image from 'next/image'

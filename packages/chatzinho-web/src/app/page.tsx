@@ -1,6 +1,5 @@
 import Button from '@ui/Button'
-
-import Field from './common/components/ui/Field'
+import Field from '@ui/Field'
 
 export default function Home() {
   return (

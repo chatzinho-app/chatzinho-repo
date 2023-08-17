@@ -1,9 +1,8 @@
-import { api } from '@/app/common/config/api'
-
+import { api } from '@common/config/api'
 import {
   CreateBidBody,
   CreateBidResponse,
-} from '../interfaces/dispute.interface'
+} from "../interfaces/dispute.interface"
 
 const disputeServerRequests = {
   listBids: async () => api.get(''),
