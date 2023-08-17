@@ -1,0 +1,16 @@
+{
+	"Nestjs Entity with File name": {
+		"prefix": "nestEntity",
+		"body": [
+		  "import { BaseEntity } from '@core/domain/entities/base.entity'",
+		  "import { Column, Entity, OneToMany } from 'typeorm'",
+		  "",
+		  "export class ${TM_DIRECTORY/^.+[\\\\/\\\\\\\\]+(.*)$/$1/} extends BaseEntity {",
+		  "  @Column()",
+      "  field: string",
+		  "}",
+		  ""
+		],
+		"description": ""
+	  },
+}
