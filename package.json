@@ -1,5 +1,5 @@
 {
-  "name": "test-licitar",
+  "name": "chatzinho-repo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,8 +16,8 @@
     "npm": "please-use-npm"
   },
   "workspaces": [
-    "packages/dispute-web",
-    "packages/dispute-api"
+    "packages/chatzinho-web",
+    "packages/chatzinho-api"
   ],
   "dependencies": {
     "date-fns": "^2.30.0"
