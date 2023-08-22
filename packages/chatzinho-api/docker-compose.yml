@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   api:
-    container_name: test_licitar_api
+    container_name: chatzinho_api
     build:
       context: .
       target: development
@@ -28,7 +28,7 @@ services:
   #   networks:
   #     - backend
   database:
-    container_name: test_licitar_db
+    container_name: chatzinho_db
     image: postgres:15-alpine
 
     ports:
