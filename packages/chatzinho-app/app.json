@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "chatzinhoApp",
-    "slug": "chatzinhoApp",
+    "name": "liberaAiApp",
+    "slug": "liberaAiApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
