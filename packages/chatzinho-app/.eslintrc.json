@@ -1,3 +1,0 @@
-{
-  "extends": ["@lsferreirapel/eslint-config/environments/native"]
-}
