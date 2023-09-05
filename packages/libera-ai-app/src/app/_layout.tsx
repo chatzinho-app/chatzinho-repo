@@ -1,27 +1,38 @@
+import '../global.css'
+
 import { useEffect } from 'react'
-import { useColorScheme } from 'react-native'
+import { View } from 'react-native'
 
 import FontAwesome from '@expo/vector-icons/FontAwesome'
-import { useFonts } from 'expo-font'
+import {
+  Raleway_100Thin as Raleway100Thin,
+  Raleway_300Light as Raleway300Light,
+  Raleway_400Regular as Raleway400Regular,
+  Raleway_500Medium as Raleway500Medium,
+  Raleway_600SemiBold as Raleway600SemiBold,
+  Raleway_700Bold as Raleway700Bold,
+  Raleway_800ExtraBold as Raleway800ExtraBold,
+  useFonts,
+} from '@expo-google-fonts/raleway'
 import { SplashScreen, Stack } from 'expo-router'
 
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from '@react-navigation/native'
-
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
-}
+// export const unstable_settings = {
+//   // Ensure that reloading on `/modal` keeps a back button present.
+//   initialRouteName: '(tabs)',
+// }
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../common/assets/fonts/SpaceMono-Regular.ttf'),
+    Raleway100Thin,
+    Raleway300Light,
+    Raleway400Regular,
+    Raleway500Medium,
+    Raleway600SemiBold,
+    Raleway700Bold,
+    Raleway800ExtraBold,
     ...FontAwesome.font,
   })
 
@@ -44,14 +55,13 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme()
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+    <View className="bg-gray-1 flex flex-1">
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
+    </View>
   )
 }

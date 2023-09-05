@@ -5,7 +5,6 @@ module.exports = function (api) {
     plugins: [
       // Required for expo-router
       'expo-router/babel',
-      'nativewind/babel',
       [
         'module-resolver',
         {
@@ -13,6 +12,7 @@ module.exports = function (api) {
           alias: {
             '@ui': './src/common/components/ui',
             '@components': './src/common/components',
+            '@assets': './src/common/assets',
             '@common': './src/common',
             '@app': './src/app',
             '@': './src',
@@ -20,6 +20,7 @@ module.exports = function (api) {
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
       ],
+      'nativewind/babel',
     ],
   }
 }

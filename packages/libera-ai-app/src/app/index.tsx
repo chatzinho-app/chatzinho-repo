@@ -1,14 +1,27 @@
-import { Text, View } from 'react-native'
+import { useWindowDimensions, View } from 'react-native'
+
+import Logo from '@assets/icons/Logo.svg'
+import { Text } from '@ui/Text'
 
 export default function Page() {
+  const { width } = useWindowDimensions()
+
+  const LOGO_WIDTH = width / 2
+
   return (
-    <View className="flex-1 items-center p-2">
-      <View className="flex-1 justify-center max-w-sm mx-2">
-        <Text className="text-xl font-bold">Hello World</Text>
-        <Text className="text-md text-cyan-500">
-          This is the first page of your app.
-        </Text>
+    <View className="flex-1 flex items-center bg-gray-1">
+      <View className="py-8 justify-between items-center w-[140vw] bg-primary rounded-b-full">
+        <View className="mt-8 mb-7">
+          <Logo width={LOGO_WIDTH} height={LOGO_WIDTH / 3.8} />
+        </View>
+        <View className="flex justify-center items-center mb-8">
+          <Text clsName="text-3xl font-bold text-gray-2 mb-1">Login</Text>
+          <Text clsName="text-xl text-center text-gray-2">
+            Informe seu e-mail e senha{'\n'}para entrar na sua conta
+          </Text>
+        </View>
       </View>
+      <View className="flex flex-1 w-full bg-gray-1"></View>
     </View>
   )
 }
