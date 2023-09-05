@@ -1,7 +1,6 @@
 import '../global.css'
 
 import { useEffect } from 'react'
-import { View } from 'react-native'
 
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import {
@@ -15,11 +14,6 @@ import {
   useFonts,
 } from '@expo-google-fonts/raleway'
 import { SplashScreen, Stack } from 'expo-router'
-
-// export const unstable_settings = {
-//   // Ensure that reloading on `/modal` keeps a back button present.
-//   initialRouteName: '(tabs)',
-// }
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -56,12 +50,13 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   return (
-    <View className="bg-gray-1 flex flex-1">
-      <Stack
-        screenOptions={{
-          headerShown: false,
-        }}
-      />
-    </View>
+    <Stack
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="index" />
+      <Stack.Screen name="(public)" />
+    </Stack>
   )
 }
