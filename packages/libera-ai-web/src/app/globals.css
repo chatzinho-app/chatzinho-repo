@@ -4,40 +4,40 @@
 
 @layer components {
   body {
-    @apply text-2xl font-normal text-dark-gray
+    @apply text-2xl font-normal text-gray-1
   }
   /* Font styles */
   .header {
-    @apply text-5xl font-medium text-dark-gray
+    @apply text-5xl font-medium text-gray-1
   }
   .header-2 {
-    @apply text-4xl font-medium text-dark-gray
+    @apply text-4xl font-medium text-gray-1
   }
   .sub-header {
-    @apply text-3xl font-normal text-dark-gray
+    @apply text-3xl font-normal text-gray-1
   }
   .sub-header-2 {
-    @apply text-3xl font-bold text-dark-gray
+    @apply text-3xl font-bold text-gray-1
   }
   .text-default {
-    @apply text-2xl font-normal text-dark-gray
+    @apply text-2xl font-normal text-gray-1
   }
   .text-bold {
-    @apply text-2xl font-semibold text-gray
+    @apply text-2xl font-semibold text-gray-1
   }
   .description-header {
-    @apply text-2xl font-medium text-gray
+    @apply text-2xl font-medium text-gray-1
   }
   .description-text {
-    @apply text-xl font-normal text-gray
+    @apply text-xl font-normal text-gray-1
   }
   .label {
-    @apply text-base font-normal text-gray
+    @apply text-base font-normal text-gray-1
   }
   .label-bold {
-    @apply text-base font-medium text-gray
+    @apply text-base font-medium text-gray-1
   }
   .action {
-    @apply text-sm font-normal text-gray
+    @apply text-sm font-normal text-gray-1
   }
 }

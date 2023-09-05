@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/common/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
@@ -13,26 +14,12 @@ module.exports = {
       xl: '1440px',
     },
     colors: {
-      transparent: 'transparent',
-      // WHITE COLORS
-      white: '#FFFFFF',
-      'white-blue': '#F2F5FF',
-      'white-gray': '#F4F5F6',
-      // GRAY COLORS
-      gray: '#AAB3C3',
-      'light-gray': '#D9D9D9',
-      'dark-gray': '#2B3241',
-      // GREEN COLORS
-      green: '#00A286',
-      'light-green': '#00C19F',
-      // BLUE COLORS
-      blue: '#4A72FF',
-      'dark-blue': '#2C6CD6',
-      'light-blue': '#B4C4FF',
-      // TEXT COLORS
-      black: '#000000',
-      // STATUS COLORS
-      error: '#FF574D',
+      primary: '#8D7DFF',
+      secondary: '#CFFF5E',
+      tertiary: '#B87EEE',
+      'gray-1': '#1A1A1A',
+      'gray-2': '#F9F9F9',
+      error: '#FF6363',
       success: '#00A286',
     },
     fontFamily: {
