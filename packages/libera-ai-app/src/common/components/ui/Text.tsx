@@ -2,11 +2,15 @@ import { Text as DefaultText } from 'react-native'
 
 import { cn } from '@common/utils/theme.utils'
 
-export type TextProps = { clsName?: string } & DefaultText['props']
+export type TextProps = {
+  clsName?: string
+  /**
+   * @deprecated Please use clsName instead
+   */
+  className?: string
+} & DefaultText['props']
 
 export function Text(props: TextProps) {
-  console.log(props)
-
   const weights = {
     'font-thin': 'Raleway100Thin',
     'font-light': 'Raleway300Light',
@@ -18,9 +22,6 @@ export function Text(props: TextProps) {
   }
 
   const className = cn('font-normal font-gray-2 font-base', props?.clsName)
-
-  console.log('props classname: ', props?.className)
-  console.log('classname: ', className)
 
   const weight =
     className.split(' ').find((name) => Object.keys(weights).includes(name)) ??
