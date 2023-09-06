@@ -1,18 +1,11 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/** @type {import('tailwindcss').Config} */
-// const nativewind = require('nativewind/tailwind/native')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const colors = require('./src/common/theme/colors')
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./app/**/*.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    colors: {
-      primary: '#8D7DFF',
-      secondary: '#CFFF5E',
-      tertiary: '#B87EEE',
-      'gray-1': '#1A1A1A',
-      'gray-2': '#F9F9F9',
-      error: '#FF6363',
-    },
+    colors,
     fontFamily: {
       Thin: ['Raleway100Thin'],
       Light: ['Raleway300Light'],
