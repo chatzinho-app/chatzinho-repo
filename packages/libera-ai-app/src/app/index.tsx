@@ -4,6 +4,7 @@ import { Animated, useWindowDimensions, View } from 'react-native'
 import { router } from 'expo-router'
 
 import SvgLogo from '@assets/icons/Logo.svg'
+import colors from '@common/theme/colors'
 
 class Logo extends React.Component<
   { color: string; width: number; height: number },
@@ -59,7 +60,7 @@ export default function Splashscreen() {
   const purpleCircle = useRef(new Animated.Value(0)).current
   const logoColor = useRef(new Animated.Value(0)).current
 
-  const ANIMATION_DURATION = 800
+  const ANIMATION_DURATION = 1000
   const LOGO_WIDTH = width / 2
 
   useEffect(() => {
@@ -89,20 +90,25 @@ export default function Splashscreen() {
             useNativeDriver: false,
           }),
         ]),
-      ]).start(() => router.replace('/(public)/'))
-    }, 500)
+      ]).start(() =>
+        setTimeout(() => {
+          router.replace('/(public)/')
+        }, ANIMATION_DURATION / 2),
+      )
+    }, 100)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <View className="flex-1 flex items-center relative justify-center bg-primary">
-      <Circle animatedValue={greenCircle} background="#CFFF5E" />
-      <Circle animatedValue={purpleCircle} background="#B87EEE" />
+      <Circle animatedValue={greenCircle} background={colors.secondary} />
+      <Circle animatedValue={purpleCircle} background={colors.tertiary} />
       <AnimatedLogo
         width={LOGO_WIDTH}
         height={LOGO_WIDTH / 3.8}
         color={logoColor.interpolate({
           inputRange: [0, 1],
-          outputRange: ['#F9F9F9', '#1A1A1A'],
+          outputRange: [colors['gray-2'], colors['gray-1']],
         })}
       />
     </View>
