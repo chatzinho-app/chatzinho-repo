@@ -1,4 +1,3 @@
-import { BidMapper } from '@application/api/bid/dto'
 import { User } from '@domain/entities/user.entity'
 import { UserStatusEnum } from '@domain/enums/user-status.enum'
 
@@ -13,7 +12,6 @@ export class UserMapper {
       cpf: user.cpf,
       email: user.email,
       status: user.status,
-      bids: BidMapper.toList(user?.bids),
       roles: user?.roles?.map((role) => role.name) ?? [],
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,

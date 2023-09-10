@@ -2,6 +2,8 @@ import { Inject, Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 
 import { UserService } from '@application/services/user.service'
+import { Exceptions } from '@core/constants/exceptions.constant'
+import { CatchError } from '@core/decorators/catch-error.decorator'
 import { PasswordValidator } from '@domain/validators/password.validator'
 
 import { AuthenticateUserDto } from './dto/authenticate-user.input'
@@ -15,18 +17,28 @@ export class AuthenticateUseCase {
     private passwordValidator: PasswordValidator,
   ) {}
 
+  @CatchError()
   async execute(input: AuthenticateUserDto): Promise<{ token: string }> {
     const { email, password } = input
 
     const foundUser = await this.userService.findOneBy({ email })
 
-    this.passwordValidator.validate(password, foundUser)
+    if (!foundUser?.id) {
+      throw Exceptions.EMAIL_OR_PASSWORD_INVALID
+    }
 
-    const token = await this.jwtService.signAsync({
-      id: foundUser.id,
-      name: foundUser.name,
-    })
+    const validPassword = await this.passwordValidator.compare(
+      password,
+      foundUser,
+    )
 
-    return { token }
+    if (validPassword) {
+      const token = await this.jwtService.signAsync({
+        id: foundUser.id,
+        name: foundUser.name,
+      })
+
+      return { token }
+    }
   }
 }

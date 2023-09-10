@@ -3,7 +3,6 @@ import { ApiProperty } from '@nestjs/swagger'
 import { RolesEnum, UserStatusEnum } from '@domain/enums'
 
 import { BaseDto } from './base.dto'
-import { BidDto } from './bid.dto'
 
 export class UserDto extends BaseDto {
   /**
@@ -60,18 +59,6 @@ export class UserDto extends BaseDto {
     default: UserStatusEnum.INACTIVE,
   })
   status: UserStatusEnum
-
-  /**
-   * User bids - All user-submitted bids
-   */
-  @ApiProperty({
-    type: BidDto,
-    title: 'User bids',
-    description: 'All user-submitted bids',
-    isArray: true,
-    required: false,
-  })
-  bids?: BidDto[]
 
   /**
    * User roles - A list of user's roles
