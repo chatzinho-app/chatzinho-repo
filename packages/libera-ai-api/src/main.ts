@@ -17,9 +17,9 @@ async function bootstrap() {
 
   const options = new DocumentBuilder()
     .setTitle('API')
-    .setDescription('Api da aplicação test-licitar')
+    .setDescription('Api da aplicação LiberaAi')
     .setVersion('1.0')
-    .addTag('licitar-test-api')
+    .addTag('libera-ai-api')
     .addBearerAuth({ in: 'header', type: 'http' })
     .build()
 
