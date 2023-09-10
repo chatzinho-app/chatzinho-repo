@@ -1,5 +1,7 @@
 export enum RolesEnum {
   'SUPER_ADMIN' = 'SUPER_ADMIN',
   'ADMIN' = 'ADMIN',
-  'USER' = 'USER',
+  'MANAGER' = 'MANAGER',
+  'DOORMAN' = 'DOORMAN',
+  'RESIDENT' = 'RESIDENT',
 }
