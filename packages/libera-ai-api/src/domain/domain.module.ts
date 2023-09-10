@@ -5,10 +5,10 @@ import { AuthModule } from '@infra/http/auth/auth.module'
 import { AuthenticateUseCase, RegisterUserUseCase } from '@usecases/auth'
 import { GetAllUsersUseCase } from '@usecases/user'
 
-import { PasswordValidator } from './validators/password.validator'
+import { PasswordValidator, UserValidator } from './validators'
 
 const useCases = [AuthenticateUseCase, RegisterUserUseCase, GetAllUsersUseCase]
-const validators = [PasswordValidator]
+const validators = [PasswordValidator, UserValidator]
 
 @Module({
   imports: [forwardRef(() => AuthModule), forwardRef(() => ApplicationModule)],
