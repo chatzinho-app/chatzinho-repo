@@ -1,9 +1,8 @@
 import { PasswordColumn } from '@core/decorators/password-column.decorator'
 import { BaseEntity } from '@core/domain/entities/base.entity'
 import { UserStatusEnum } from '@domain/enums/user-status.enum'
-import { Column, Entity, JoinTable, ManyToMany, OneToMany } from 'typeorm'
+import { Column, Entity, JoinTable, ManyToMany } from 'typeorm'
 
-import { Bid } from './bid.entity'
 import { Role } from './role.entity'
 
 @Entity({ name: 'users' })
@@ -30,9 +29,6 @@ export class User extends BaseEntity {
     default: UserStatusEnum.INACTIVE,
   })
   status: UserStatusEnum
-
-  @OneToMany(() => Bid, (bid) => bid.dispute, { nullable: true })
-  bids?: Bid[]
 
   @ManyToMany(() => Role, (role) => role.users, {
     eager: true,
