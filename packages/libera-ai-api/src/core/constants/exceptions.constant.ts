@@ -23,6 +23,10 @@ export const Exceptions = {
     message: 'User not found',
     token: 'USER_NOT_FOUND',
   }),
+  USER_ALREADY_ACTIVATED: new CustomNotFoundRequestException({
+    message: 'User has already been activated',
+    token: 'USER_ALREADY_ACTIVATED',
+  }),
   EMAIL_ALREADY_EXISTS: new CustomBadRequestException({
     message: 'Email already exists',
     token: 'EMAIL_ALREADY_EXISTS',

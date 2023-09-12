@@ -4,7 +4,6 @@ import { UserDto } from '@core/dto/user.dto'
 
 export class RegisterV1Input extends PickType(UserDto, [
   'email',
-  'name',
   'cpf',
 ] as const) {
   /**
