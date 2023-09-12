@@ -1,7 +1,11 @@
 import { Body, Controller, Post } from '@nestjs/common'
 import { ApiOperation, ApiTags } from '@nestjs/swagger'
 
-import { AuthenticateUseCase, RegisterUserUseCase } from '@usecases/auth'
+import {
+  AuthenticateUseCase,
+  RegisterUserUseCase,
+  VerifyIndentifierUseCase,
+} from '@usecases/auth'
 
 import { UserMapper } from '../user/dto'
 import {
@@ -9,6 +13,8 @@ import {
   LoginV1Output,
   RegisterV1Input,
   RegisterV1Output,
+  VerifyV1Input,
+  VerifyV1Output,
 } from './dto'
 
 @ApiTags('Auth')
@@ -17,6 +23,7 @@ export class AuthV1Api {
   constructor(
     private readonly authenticateUseCase: AuthenticateUseCase,
     private readonly registerUserUseCase: RegisterUserUseCase,
+    private readonly verifyIdentifierUseCase: VerifyIndentifierUseCase,
   ) {}
 
   @ApiOperation({
@@ -26,6 +33,17 @@ export class AuthV1Api {
   @Post('/login')
   async login(@Body() body: LoginV1Input): Promise<LoginV1Output> {
     return await this.authenticateUseCase.execute(body)
+  }
+
+  @ApiOperation({
+    description: 'Verify indentifier',
+    tags: ['auth'],
+  })
+  @Post('/verify')
+  async verifyUser(@Body() body: VerifyV1Input): Promise<VerifyV1Output> {
+    const user = await this.verifyIdentifierUseCase.execute(body)
+
+    return UserMapper.toDto(user)
   }
 
   @ApiOperation({
