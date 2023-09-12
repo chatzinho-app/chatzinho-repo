@@ -5,7 +5,7 @@ import { OffsetPaginationOutputDto } from '@core/dto/offset-pagination.dto'
 import { User } from '@domain/entities/user.entity'
 import { IOffsetPaginationOptions } from '@domain/interfaces/offset-paginaton.interface'
 import { IUserService } from '@domain/interfaces/user-service.interface'
-import { FindOptionsWhere } from 'typeorm'
+import { DeepPartial, FindOptionsWhere, UpdateResult } from 'typeorm'
 
 @Injectable()
 export class UserService implements IUserService {
@@ -28,6 +28,13 @@ export class UserService implements IUserService {
     where: FindOptionsWhere<User> | FindOptionsWhere<User>[],
   ): Promise<User> {
     return this.repository.findOneBy(where)
+  }
+
+  async update(
+    criteria: FindOptionsWhere<User>,
+    update: DeepPartial<User>,
+  ): Promise<UpdateResult> {
+    return this.repository.update(criteria, update)
   }
 
   async save(user: User): Promise<User> {

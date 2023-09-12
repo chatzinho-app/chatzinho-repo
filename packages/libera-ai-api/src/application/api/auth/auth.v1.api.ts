@@ -34,8 +34,12 @@ export class AuthV1Api {
   })
   @Post('/register')
   async register(@Body() body: RegisterV1Input): Promise<RegisterV1Output> {
-    const user = await this.registerUserUseCase.execute(body)
+    const userIsRegistred = await this.registerUserUseCase.execute(body)
 
-    return UserMapper.toDto(user)
+    if (userIsRegistred) return { status: 'success' }
+
+    return {
+      status: 'error',
+    }
   }
 }
