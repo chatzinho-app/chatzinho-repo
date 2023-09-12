@@ -76,11 +76,15 @@ export class SeedUsers1694225549533 implements MigrationInterface {
     await queryRunner.manager
       .getRepository(User)
       .createQueryBuilder()
-      .where('email = superadmin@email.com')
-      .orWhere('email = admin@email.com')
-      .orWhere('email = sindico@email.com')
-      .orWhere('email = porteiro@email.com')
-      .orWhere('email = morador@email.com')
+      .where('email IN (:emails)', {
+        emails: [
+          'superadmin@email.com',
+          'admin@email.com',
+          'sindico@email.com',
+          'porteiro@email.com',
+          'morador@email.com',
+        ],
+      })
       .delete()
       .execute()
   }
