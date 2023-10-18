@@ -4,11 +4,11 @@ import { DomainModule } from '@domain/domain.module'
 
 import { AuthV1Api } from './api/auth/auth.v1.api'
 import { UserV1Api } from './api/user/user.v1.api'
-import { UserRepository } from './repository'
-import { UserService } from './services'
+import { RoleRepository, UserRepository } from './repository'
+import { RoleService, UserService } from './services'
 
-const repositories = [UserRepository]
-const services = [UserService]
+const repositories = [UserRepository, RoleRepository]
+const services = [UserService, RoleService]
 
 @Module({
   imports: [forwardRef(() => DomainModule)],
