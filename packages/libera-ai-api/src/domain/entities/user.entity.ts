@@ -23,6 +23,9 @@ export class User extends BaseEntity {
   })
   cpf: string
 
+  @Column({ type: 'date' })
+  birthdate: Date
+
   @Column({
     enumName: 'UserStatusEnum',
     enum: UserStatusEnum,
@@ -43,6 +46,7 @@ export class User extends BaseEntity {
     password: string,
     cpf: string,
     status: UserStatusEnum,
+    birthdate: Date,
   ) {
     super()
     this.name = name
@@ -50,5 +54,6 @@ export class User extends BaseEntity {
     this.password = password
     this.cpf = cpf
     this.status = status
+    this.birthdate = birthdate
   }
 }
