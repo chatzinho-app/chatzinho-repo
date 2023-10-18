@@ -31,12 +31,24 @@ export class OffsetPaginationOptionsDto {
     required: false,
   })
   limit: number
+
+  /**
+   * Search term
+   * @example 'Lucas'
+   */
+  @ApiProperty({
+    type: String,
+    title: 'Search term',
+    example: 'Lucas',
+    required: false,
+  })
+  search?: string
 }
 
-class OffsetPaginationMetaDto extends PickType(OffsetPaginationOptionsDto, [
-  'limit',
-  'offset',
-] as const) {
+export class OffsetPaginationMetaDto extends PickType(
+  OffsetPaginationOptionsDto,
+  ['limit', 'offset'] as const,
+) {
   /**
    * The total number of items
    * @example '100'

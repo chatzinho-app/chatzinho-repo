@@ -38,6 +38,6 @@ export class RegisterUserUseCase {
       },
     )
 
-    return updatedUser.affected > 0
+    return !!updatedUser?.id
   }
 }

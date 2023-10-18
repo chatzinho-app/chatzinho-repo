@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common'
 
 import { UserService } from '@application/services/user.service'
+import { Exceptions } from '@core/constants'
 import { CatchError } from '@core/decorators/catch-error.decorator'
 import { User } from '@domain/entities'
 import { ActivateUserValidator } from '@domain/validators/activate-user.validator'
@@ -18,9 +19,13 @@ export class VerifyIndentifierUseCase {
 
   @CatchError()
   async execute(input: DeepPartial<VerifyIndentifierDto>): Promise<User> {
-    const { email, cpf } = input
+    const { cpf } = input
 
-    const foundUser = await this.userService.findOneBy([{ email }, { cpf }])
+    const foundUser = await this.userService.findOneBy({ cpf })
+
+    if (!foundUser?.id) {
+      throw Exceptions.USER_NOT_FOUND
+    }
 
     const isValidUser = this.activateUserValidator.validate(foundUser)
 

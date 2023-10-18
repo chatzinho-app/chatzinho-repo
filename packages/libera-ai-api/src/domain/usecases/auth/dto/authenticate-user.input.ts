@@ -5,4 +5,6 @@ import { User } from '@domain/entities'
 export class AuthenticateUserDto extends PickType(User, [
   'email',
   'password',
-] as const) {}
+] as const) {
+  onlyAdmin?: boolean = false
+}

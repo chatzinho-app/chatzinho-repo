@@ -1,4 +1,5 @@
 export * from './api-paginated-response.decorator'
 export * from './auth-roles.decorator'
+export * from './catch-error.decorator'
 export * from './get-authenticated-user.decorator'
 export * from './password-column.decorator'

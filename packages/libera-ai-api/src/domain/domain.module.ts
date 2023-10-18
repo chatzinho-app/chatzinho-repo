@@ -7,10 +7,18 @@ import {
   RegisterUserUseCase,
   VerifyIndentifierUseCase,
 } from '@usecases/auth'
-import { GetAllUsersUseCase } from '@usecases/user'
+import {
+  CreateBySuperAdminUsecase,
+  GetAllUsersUseCase,
+  GetOneUserUseCase,
+  GetStatisticsUseCase,
+  UpdateBySuperAdminUseCase,
+} from '@usecases/user'
+import { DeleteOneUserUseCase } from '@usecases/user/delete-one-user.usecase'
 
 import {
   ActivateUserValidator,
+  CpfValidator,
   EmailValidator,
   PasswordValidator,
   UserValidator,
@@ -21,10 +29,16 @@ const useCases = [
   RegisterUserUseCase,
   VerifyIndentifierUseCase,
   GetAllUsersUseCase,
+  GetOneUserUseCase,
+  GetStatisticsUseCase,
+  DeleteOneUserUseCase,
+  CreateBySuperAdminUsecase,
+  UpdateBySuperAdminUseCase,
 ]
 const validators = [
   ActivateUserValidator,
   EmailValidator,
+  CpfValidator,
   PasswordValidator,
   UserValidator,
 ]

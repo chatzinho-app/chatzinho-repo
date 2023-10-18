@@ -13,6 +13,7 @@ async function bootstrap() {
     type: VersioningType.URI,
   })
 
+  app.enableCors()
   app.useGlobalGuards(new JwtAuthGuard(new Reflector()))
 
   const options = new DocumentBuilder()
@@ -21,6 +22,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('libera-ai-api')
     .addBearerAuth({ in: 'header', type: 'http' })
+    .setBasePath('http://localhost:4000/api-json')
     .build()
 
   const document = SwaggerModule.createDocument(app, options)

@@ -27,13 +27,25 @@ export const Exceptions = {
     message: 'User has already been activated',
     token: 'USER_ALREADY_ACTIVATED',
   }),
+  USER_NOT_ACTIVATED: new CustomNotFoundRequestException({
+    message: 'User has not been activated',
+    token: 'USER_NOT_ACTIVATED',
+  }),
   EMAIL_ALREADY_EXISTS: new CustomBadRequestException({
     message: 'Email already exists',
     token: 'EMAIL_ALREADY_EXISTS',
   }),
+  CPF_ALREADY_EXISTS: new CustomBadRequestException({
+    message: 'CPF already exists',
+    token: 'CPF_ALREADY_EXISTS',
+  }),
   EMAIL_OR_PASSWORD_INVALID: new CustomBadRequestException({
     message: 'Email ou senha invalidos',
     token: 'EMAIL_OR_PASSWORD_INVALID',
+  }),
+  UNAUTHORIZED_LOGIN: new CustomUnauthorizedException({
+    message: 'This user cannot log in in this application',
+    token: 'UNAUTHORIZED_LOGIN',
   }),
   WEEK_PASSWORD: new CustomBadRequestException({
     message:

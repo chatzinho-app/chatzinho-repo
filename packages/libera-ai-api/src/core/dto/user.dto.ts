@@ -47,11 +47,21 @@ export class UserDto extends BaseDto {
   cpf: string
 
   /**
+   * The date the user was born.
+   * @example '2001-09-02T03:20:10.500Z'
+   */
+  @ApiProperty({
+    type: Date,
+    description: `The date the user was born`,
+    example: '2001-09-02T03:20:10.500Z',
+  })
+  birthdate: Date
+
+  /**
    * User status - Property to know if the user's enabled
    * @example 'ACTIVE'
    */
   @ApiProperty({
-    type: UserStatusEnum,
     enum: UserStatusEnum,
     title: 'User status',
     description: `Property to know if the user's enabled`,
@@ -65,11 +75,11 @@ export class UserDto extends BaseDto {
    * @example ['ADMIN']
    */
   @ApiProperty({
-    type: Array<RolesEnum>,
+    enum: RolesEnum,
+    isArray: true,
     title: 'User roles',
     description: `A list of user's roles`,
-    example: ['ADMIN'],
-    isArray: true,
+    example: [RolesEnum.ADMIN],
   })
   roles?: RolesEnum[]
 }
