@@ -1,6 +1,7 @@
 export interface IOffsetPaginationOptions {
   offset?: number
   limit?: number
+  search?: string
 }
 
 export interface IOffsetPaginationMeta {
