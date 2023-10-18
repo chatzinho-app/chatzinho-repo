@@ -16,6 +16,7 @@ module.exports = {
       Extrabold: ['Raleway800ExtraBold'],
     },
     fontSize: {
+      xs: 10, //    14px
       sm: 14, //    14px
       base: 16, //      16px
       xl: 18, //    18px

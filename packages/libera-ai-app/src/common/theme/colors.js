@@ -1,8 +1,16 @@
 module.exports = {
+  transparent: 'transparent',
+  black: '#000000',
+  white: '#FFFFFF',
   primary: '#8D7DFF',
   secondary: '#CFFF5E',
   tertiary: '#B87EEE',
   'gray-1': '#1A1A1A',
   'gray-2': '#F9F9F9',
+  'darkgray-1': '#333232',
+  'darkgray-2': '#4a4a4a',
+  'lightgray-1': '#BDBDBD',
+  'lightgray-2': '#DFDFDF',
   error: '#FF6363',
+  success: '#00A286',
 }

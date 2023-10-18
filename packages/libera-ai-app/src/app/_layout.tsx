@@ -1,6 +1,12 @@
 import '../global.css'
 
 import { useEffect } from 'react'
+import {
+  initialWindowMetrics,
+  SafeAreaProvider,
+} from 'react-native-safe-area-context'
+import Toast from 'react-native-toast-message'
+import Reactotron from 'reactotron-react-native'
 
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import {
@@ -15,8 +21,12 @@ import {
 } from '@expo-google-fonts/raleway'
 import { SplashScreen, Stack } from 'expo-router'
 
+import QueryClientProvider from '@common/config/react-query-provider'
+
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
+
+Reactotron.configure().useReactNative().connect()
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -50,13 +60,17 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="index" />
-      <Stack.Screen name="(public)" />
-    </Stack>
+    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      <QueryClientProvider>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="index" />
+        </Stack>
+        <Toast />
+      </QueryClientProvider>
+    </SafeAreaProvider>
   )
 }

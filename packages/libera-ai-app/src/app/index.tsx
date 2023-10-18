@@ -92,7 +92,7 @@ export default function Splashscreen() {
         ]),
       ]).start(() =>
         setTimeout(() => {
-          router.replace('/(public)/')
+          router.replace('/(public)/login')
         }, ANIMATION_DURATION / 2),
       )
     }, 100)
