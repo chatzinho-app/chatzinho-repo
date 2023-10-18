@@ -1,34 +1,35 @@
-/* eslint-disable no-undef */
+import { getCookie } from '@common/utils/storage'
+import { paths } from '@generated/types'
+import createClient from 'openapi-fetch'
 
-async function request<TResponse>(
-  input: RequestInfo | URL,
-  init?: RequestInit | undefined,
-): Promise<TResponse> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://localhost:3000'
+import envs from './envs'
 
-  const response = await fetch(`${baseUrl}/${input}`, init)
-  return await response.json()
-}
+const baseUrl = envs.BASE_URL
+const token = getCookie(envs.TOKEN_ALIAS)
 
-export const api = {
-  get: async <TResponse>(
-    input: RequestInfo | URL,
-    init?: RequestInit | undefined,
-  ) =>
-    await request<TResponse>(input, {
-      cache: 'no-store',
-      ...init,
-      method: 'GET',
-    }),
-  post: async <TResponse, TBody>(
-    input: RequestInfo | URL,
-    body: TBody,
-    init?: RequestInit | undefined,
-  ) =>
-    await request<TResponse>(input, {
-      cache: 'no-store',
-      ...init,
-      method: 'POST',
-      body: JSON.stringify(body),
-    }),
-}
+export const publicApi = createClient<paths>({
+  baseUrl,
+  cache: 'no-store',
+  // // mode: 'no-cors',
+  // cache: 'no-cache',
+  // credentials: 'same-origin',
+  // headers: {
+  //   'Content-Type': 'application/json',
+  // },
+  // referrerPolicy: 'no-referrer',
+})
+
+export const api = createClient<paths>({
+  baseUrl,
+  cache: 'no-store',
+  headers: {
+    Authorization: 'Bearer ' + token,
+  },
+  // // mode: 'no-cors',
+  // cache: 'no-cache',
+  // credentials: 'same-origin',
+  // headers: {
+  //   'Content-Type': 'application/json',
+  // },
+  // referrerPolicy: 'no-referrer',
+})
