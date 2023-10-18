@@ -1,10 +1,11 @@
 import './globals.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 import BaseTemplate from '@common/components/BaseTemplate'
 import QueryClientProvider from '@common/config/react-query-provider'
-import { Poppins } from 'next/font/google'
+import { Raleway } from 'next/font/google'
 
-const poppins = Poppins({
+const raleway = Raleway({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
 })
@@ -21,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={poppins.className}>
+      <body className={raleway.className}>
         <QueryClientProvider>
           <BaseTemplate>{children}</BaseTemplate>
         </QueryClientProvider>
