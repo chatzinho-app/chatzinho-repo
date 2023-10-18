@@ -10,6 +10,7 @@ export class UserMapper {
       id: user.id,
       name: user.name,
       cpf: user.cpf,
+      birthdate: user.birthdate,
       email: user.email,
       status: user.status,
       roles: user?.roles?.map((role) => role.name) ?? [],
@@ -30,6 +31,7 @@ export class UserMapper {
       environmentInputV1Dto.password,
       environmentInputV1Dto.cpf,
       UserStatusEnum.INACTIVE,
+      environmentInputV1Dto.birthdate,
     )
   }
 }
