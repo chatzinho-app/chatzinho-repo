@@ -1,5 +1,6 @@
 export * from './login.v1.input'
 export * from './login.v1.output'
+export * from './me.v1.output'
 export * from './register.v1.input'
 export * from './register.v1.output'
 export * from './validate-token.v1.input'

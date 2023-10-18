@@ -1,6 +1,8 @@
-import { Body, Controller, Post } from '@nestjs/common'
-import { ApiOperation, ApiTags } from '@nestjs/swagger'
+import { Body, Controller, Get, Post } from '@nestjs/common'
+import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger'
 
+import { GetAuthenticatedUser, Roles } from '@core/decorators'
+import { User } from '@domain/entities'
 import {
   AuthenticateUseCase,
   RegisterUserUseCase,
@@ -11,6 +13,7 @@ import { UserMapper } from '../user/dto'
 import {
   LoginV1Input,
   LoginV1Output,
+  MeV1Output,
   RegisterV1Input,
   RegisterV1Output,
   VerifyV1Input,
@@ -27,11 +30,33 @@ export class AuthV1Api {
   ) {}
 
   @ApiOperation({
+    description: 'Get user authenticated using token',
+    tags: ['auth'],
+  })
+  @Get('/me')
+  @Roles('ANY')
+  @ApiOkResponse({ type: MeV1Output })
+  async me(@GetAuthenticatedUser() user: User): Promise<MeV1Output> {
+    return UserMapper.toDto(user)
+  }
+
+  @ApiOperation({
     description: 'Generates a token based on email and password',
     tags: ['auth'],
   })
   @Post('/login')
+  @ApiOkResponse({ type: LoginV1Output })
   async login(@Body() body: LoginV1Input): Promise<LoginV1Output> {
+    return await this.authenticateUseCase.execute({ ...body, onlyAdmin: true })
+  }
+
+  @ApiOperation({
+    description: 'Generates a token based on email and password',
+    tags: ['auth'],
+  })
+  @Post('/login-app')
+  @ApiOkResponse({ type: LoginV1Output })
+  async loginInApp(@Body() body: LoginV1Input): Promise<LoginV1Output> {
     return await this.authenticateUseCase.execute(body)
   }
 
@@ -40,6 +65,7 @@ export class AuthV1Api {
     tags: ['auth'],
   })
   @Post('/verify')
+  @ApiOkResponse({ type: VerifyV1Output })
   async verifyUser(@Body() body: VerifyV1Input): Promise<VerifyV1Output> {
     const user = await this.verifyIdentifierUseCase.execute(body)
 
@@ -51,6 +77,7 @@ export class AuthV1Api {
     tags: ['auth'],
   })
   @Post('/register')
+  @ApiOkResponse({ type: RegisterV1Output })
   async register(@Body() body: RegisterV1Input): Promise<RegisterV1Output> {
     const userIsRegistred = await this.registerUserUseCase.execute(body)
 
