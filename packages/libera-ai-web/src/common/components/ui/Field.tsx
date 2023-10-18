@@ -7,23 +7,26 @@ import { twMerge } from 'tailwind-merge'
 
 import Input from './Input'
 import MaskInput, { MaskInputProps } from './MaskInput'
+import SelectInput, { SelectInputProps } from './SelectInput'
 
-export interface FieldProps extends Partial<MaskInputProps> {
+export type FieldProps = {
   errorMessage?: string
   label?: string
-}
+} & Partial<MaskInputProps> &
+  Partial<SelectInputProps>
 
 export default function Field({
   errorMessage,
   label,
   className,
   mask,
+  options,
   ...props
 }: FieldProps) {
   const [visible, setVisible] = useState(false)
 
   const labelClassName = twMerge(
-    'text-default mb-0.5 block',
+    'text-default mb-0.5 block font-semibold text-white',
     props?.required && "after:text-error after:content-['*']",
     errorMessage && 'text-error',
   )
@@ -52,7 +55,7 @@ export default function Field({
           {label}
         </label>
       )}
-      {mask ? (
+      {mask && (
         <MaskInput
           invalid={!!errorMessage}
           id={`form_${props?.name}`}
@@ -61,7 +64,16 @@ export default function Field({
           type={visible ? 'text' : props?.type}
           mask={mask}
         />
-      ) : (
+      )}
+      {options && (
+        <SelectInput
+          id={`form_${props?.name}`}
+          invalid={!!errorMessage}
+          options={options}
+          {...props}
+        />
+      )}
+      {!mask && !options && (
         <Input
           invalid={!!errorMessage}
           id={`form_${props?.name}`}
@@ -70,9 +82,13 @@ export default function Field({
           type={visible ? 'text' : props?.type}
         />
       )}
-      {errorMessage && (
-        <p className="label mt-0.5 text-sm text-error">{errorMessage}</p>
-      )}
+      <p
+        className={`label mt-0.5 text-sm ${
+          errorMessage ? 'text-error' : 'text-transparent'
+        }`}
+      >
+        {errorMessage ?? 'error-message'}
+      </p>
     </div>
   )
 }

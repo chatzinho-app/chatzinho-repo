@@ -8,7 +8,7 @@
   }
   /* Font styles */
   .header {
-    @apply text-5xl font-medium text-gray-1
+    @apply text-5xl font-bold text-gray-1
   }
   .header-2 {
     @apply text-4xl font-medium text-gray-1
@@ -21,9 +21,6 @@
   }
   .text-default {
     @apply text-2xl font-normal text-gray-1
-  }
-  .text-bold {
-    @apply text-2xl font-semibold text-gray-1
   }
   .description-header {
     @apply text-2xl font-medium text-gray-1

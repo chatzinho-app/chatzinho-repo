@@ -18,7 +18,7 @@ export default function Input({
   ...props
 }: InputProps) {
   const inputClassName = twMerge(
-    'description-text block block w-full w-full rounded-full border border-light-gray bg-white px-2 py-2 text-dark-gray placeholder-gray focus:border-light-blue focus:outline-none focus:ring-2 focus:ring-light-blue',
+    'description-text text-dark-gray placeholder-gray focus:border-light-blue focus:ring-light-blue block block w-full w-full rounded-sm border border-lightgray-2 bg-white px-2 py-2 focus:outline-none focus:ring-2',
     invalid &&
       'border-error text-error placeholder-error focus:border-error/50 focus:ring-error/50',
     !!startDecorator && 'pl-6',

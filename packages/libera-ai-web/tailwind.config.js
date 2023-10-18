@@ -14,16 +14,23 @@ module.exports = {
       xl: '1440px',
     },
     colors: {
+      transparent: 'transparent',
+      white: '#F9F9F9',
+      black: '#000000',
       primary: '#8D7DFF',
       secondary: '#CFFF5E',
       tertiary: '#B87EEE',
       'gray-1': '#1A1A1A',
       'gray-2': '#F9F9F9',
+      'darkgray-1': '#333232',
+      'darkgray-2': '#4a4a4a',
+      'lightgray-1': '#BDBDBD',
+      'lightgray-2': '#DFDFDF',
       error: '#FF6363',
       success: '#00A286',
     },
     fontFamily: {
-      sans: ['Poppins', 'sans-serif'],
+      sans: ['Raleway', 'sans-serif'],
     },
     fontSize: {
       sm: '0.625rem', // 10
@@ -38,7 +45,6 @@ module.exports = {
       0: '0',
       0.5: '0.313rem', // xs
       1: '0.625rem', // sm
-      1.5: '0.69rem', // sm
       2: '0.938rem', // md
       3: '1.25rem', // lg
       4: '1.563rem', // xl
@@ -48,9 +54,9 @@ module.exports = {
       8: '3.75rem', // 5xl
     },
     borderRadius: {
-      sm: '0.625rem',
-      md: '0.938rem',
-      lg: '1.25rem',
+      sm: '0.3125rem',
+      md: '0.625rem',
+      lg: '0.938rem',
       full: '9999px',
     },
     extend: {
@@ -61,4 +67,5 @@ module.exports = {
       },
     },
   },
+  plugins: [require('tailwind-scrollbar')],
 }
