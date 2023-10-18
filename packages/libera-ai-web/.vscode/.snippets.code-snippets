@@ -1,0 +1,54 @@
+{
+	"React Component With Folder Name": {
+		"prefix": "rffc",
+		"body": [
+		  "import React from 'react'",
+		  "",
+		  "export default function ${TM_DIRECTORY/^.+[\\\\/\\\\\\\\]+(.*)$/$1/}() {",
+		  "  return (",
+		  "    <section className=\"flex\">",
+		  "      <p>${TM_DIRECTORY/^.+[\\\\/\\\\\\\\]+(.*)$/$1/}</p>",
+		  "    </section>",
+		  "  )",
+		  "}",
+		  ""
+		],
+		"description": ""
+	  },
+	  "React Component With File Name": {
+		"prefix": "rfc",
+		"body": [
+		  "import React from 'react'",
+		  "",
+		  "export default function ${TM_FILENAME_BASE}() {",
+		  "  return (",
+		  "    <section className=\"flex\">",
+		  "      <p>${TM_FILENAME_BASE}</p>",
+		  "    </section>",
+		  "  )",
+		  "}",
+		  ""
+		],
+		"description": ""
+	  },
+	  "React Hook With Folder Name": {
+		"prefix": "rfh",
+		"body": [
+      "'use client'",
+      "",
+		  "interface Use${TM_DIRECTORY/^.+[\\\\/\\\\\\\\]+(.*)$/$1/}Values {",
+		  "  data: any[]",
+		  "}",
+		  "",
+		  "export default function use${TM_DIRECTORY/^.+[\\\\/\\\\\\\\]+(.*)$/$1/}(): Use${TM_DIRECTORY/^.+[\\\\/\\\\\\\\]+(.*)$/$1/}Values {",
+      "  const data = []",
+      "",
+      "  return {",
+		  "    data,",
+		  "  }",
+		  "}",
+		  ""
+		],
+		"description": ""
+	  }
+}

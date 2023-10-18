@@ -1,0 +1,6 @@
+{
+  "extends": ["@lsferreirapel/eslint-config/environments/react"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off"
+  }
+}
