@@ -4,8 +4,15 @@ export interface IOffsetPaginationOptions {
   search?: string
 }
 
+export interface IOffsetPaginationOptionsWithParams<T> {
+  offset?: number
+  limit?: number
+  params?: T
+}
+
 export interface IOffsetPaginationMeta {
   count: number
+  offset?: number
 }
 
 export interface IOffsetPaginationInput<T> {

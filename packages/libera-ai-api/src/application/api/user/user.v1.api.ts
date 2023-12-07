@@ -17,6 +17,7 @@ import {
 
 import { Roles } from '@core/decorators'
 import { ApiPaginatedResponse } from '@core/decorators/api-paginated-response.decorator'
+import { OmitAudit } from '@core/decorators/omit-audit.decorator'
 import {
   OffsetPaginationOptionsDto,
   OffsetPaginationOutputDto,
@@ -63,6 +64,7 @@ export class UserV1Api {
     tags: ['auth'],
   })
   @Get('/statistics')
+  @OmitAudit()
   @Roles('ANY')
   @ApiOkResponse({ type: GetStatisticsV1Output })
   async getStatistics(): Promise<GetStatisticsV1Output> {
@@ -74,6 +76,7 @@ export class UserV1Api {
     tags: ['auth'],
   })
   @Get('/')
+  @OmitAudit()
   @Roles(RolesEnum.SUPER_ADMIN, RolesEnum.ADMIN, RolesEnum.MANAGER)
   @ApiPaginatedResponse(UserV1OutputDto)
   async getAll(
@@ -92,6 +95,7 @@ export class UserV1Api {
     tags: ['auth'],
   })
   @Get('/:id')
+  @OmitAudit()
   @Roles(RolesEnum.SUPER_ADMIN, RolesEnum.ADMIN, RolesEnum.MANAGER)
   @ApiOkResponse({ type: FindOneUserV1OutputDto })
   async getOne(

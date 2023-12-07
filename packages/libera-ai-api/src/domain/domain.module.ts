@@ -2,6 +2,7 @@ import { forwardRef, Module } from '@nestjs/common'
 
 import { ApplicationModule } from '@application/application.module'
 import { AuthModule } from '@infra/http/auth/auth.module'
+import { GetAllAuditsUseCase, GetAuditStatisticsUseCase } from '@usecases/audit'
 import {
   AuthenticateUseCase,
   RegisterUserUseCase,
@@ -25,6 +26,8 @@ import {
 } from './validators'
 
 const useCases = [
+  GetAllAuditsUseCase,
+  GetAuditStatisticsUseCase,
   AuthenticateUseCase,
   RegisterUserUseCase,
   VerifyIndentifierUseCase,

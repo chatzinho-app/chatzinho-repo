@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common'
 import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger'
 
 import { GetAuthenticatedUser, Roles } from '@core/decorators'
+import { OmitAudit } from '@core/decorators/omit-audit.decorator'
 import { User } from '@domain/entities'
 import {
   AuthenticateUseCase,
@@ -34,6 +35,7 @@ export class AuthV1Api {
     tags: ['auth'],
   })
   @Get('/me')
+  @OmitAudit()
   @Roles('ANY')
   @ApiOkResponse({ type: MeV1Output })
   async me(@GetAuthenticatedUser() user: User): Promise<MeV1Output> {
@@ -45,6 +47,7 @@ export class AuthV1Api {
     tags: ['auth'],
   })
   @Post('/login')
+  @OmitAudit()
   @ApiOkResponse({ type: LoginV1Output })
   async login(@Body() body: LoginV1Input): Promise<LoginV1Output> {
     return await this.authenticateUseCase.execute({ ...body, onlyAdmin: true })
@@ -55,6 +58,7 @@ export class AuthV1Api {
     tags: ['auth'],
   })
   @Post('/login-app')
+  @OmitAudit()
   @ApiOkResponse({ type: LoginV1Output })
   async loginInApp(@Body() body: LoginV1Input): Promise<LoginV1Output> {
     return await this.authenticateUseCase.execute(body)
@@ -65,6 +69,7 @@ export class AuthV1Api {
     tags: ['auth'],
   })
   @Post('/verify')
+  @OmitAudit()
   @ApiOkResponse({ type: VerifyV1Output })
   async verifyUser(@Body() body: VerifyV1Input): Promise<VerifyV1Output> {
     const user = await this.verifyIdentifierUseCase.execute(body)
@@ -77,6 +82,7 @@ export class AuthV1Api {
     tags: ['auth'],
   })
   @Post('/register')
+  @OmitAudit()
   @ApiOkResponse({ type: RegisterV1Output })
   async register(@Body() body: RegisterV1Input): Promise<RegisterV1Output> {
     const userIsRegistred = await this.registerUserUseCase.execute(body)
