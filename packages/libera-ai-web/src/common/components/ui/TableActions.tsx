@@ -31,9 +31,11 @@ export default function TableActions({
           className="mr-2 w-[30%]"
           onChange={debounce((e: any) => onSearch?.(e?.target?.value), 500)}
         />
-        <Button className="w-auto" onClick={onAdd}>
-          {addButtonLabel}
-        </Button>
+        {!!onAdd && (
+          <Button className="w-auto" onClick={onAdd}>
+            {addButtonLabel}
+          </Button>
+        )}
       </div>
     </header>
   )

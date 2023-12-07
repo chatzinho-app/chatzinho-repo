@@ -14,6 +14,13 @@ export default async function Dashboard() {
     },
   })
 
+  const { data: audits } = await publicApi.GET('/v1/audits', {
+    params: { query: { limit: 10, offset: 0 } },
+    headers: {
+      Authorization: 'Bearer ' + token,
+    },
+  })
+
   const chartData = [
     ['Cargo', 'Usuários'],
     ['Moradores', data?.count.resident ?? 0],
@@ -38,6 +45,10 @@ export default async function Dashboard() {
         <div className="flex flex-col items-center rounded-md border-2 border-tertiary p-5">
           <h3 className="text-2xl font-bold text-tertiary">Administradores</h3>
           <span>{String(data?.count.admin).padStart(3, '0')}</span>
+        </div>
+        <div className="flex flex-col items-center rounded-md border-2 border-tertiary p-5">
+          <h3 className="text-2xl font-bold text-tertiary">Qtd. Requisições</h3>
+          <span>{String(audits?.meta?.count ?? 0).padStart(3, '0')}</span>
         </div>
       </section>
       {/* <section>
