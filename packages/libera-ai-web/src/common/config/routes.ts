@@ -11,4 +11,8 @@ export const adminRoutes: Array<Route> = [
     label: 'Usuários',
     href: `${ADMIN_BASE__PATH}/users`,
   },
+  {
+    label: 'Requisições',
+    href: `${ADMIN_BASE__PATH}/audits`,
+  },
 ]
