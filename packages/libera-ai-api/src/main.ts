@@ -3,6 +3,7 @@ import { NestFactory, Reflector } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 
 import { JwtAuthGuard } from '@infra/http/auth/jwt-auth.guard'
+import * as requestIp from 'request-ip'
 
 import { AppModule } from './app.module'
 
@@ -14,6 +15,7 @@ async function bootstrap() {
   })
 
   app.enableCors()
+  app.use(requestIp.mw())
   app.useGlobalGuards(new JwtAuthGuard(new Reflector()))
 
   const options = new DocumentBuilder()
